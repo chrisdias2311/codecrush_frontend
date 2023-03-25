@@ -1,0 +1,49 @@
+.container{
+    /* border: 8px solid black; */
+    margin-top: 6rem;
+
+}
+
+/* .row{
+    border: 6px solid yellowgreen;
+} */
+
+.single-product-img img{
+    margin-top: 2rem;
+    /* border: 3px solid orange; */
+    max-width: 100%;
+}
+.single-product .container{
+    /* background-color:#f1f2f6; */
+}
+
+.col-md-7{
+    /* border: 3px solid blue; */
+}
+
+.deatiltext{
+    text-align: justify;
+}
+.qnty {
+    max-width: 20%;
+}
+
+.orange-text{
+    color: orange;
+}
+
+#relate{
+    position: relative;
+}
+
+.section-title h3:after {
+    position: absolute;
+    content: '';
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 50px;
+    height: 2px;
+    background-color: #F28123;
+    margin: 0 auto;
+}

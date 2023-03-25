@@ -10,6 +10,14 @@ import Login from './components/Login';
 import FarmerSignup from './components/FarmerSignup';
 import FarmerLogin from './components/FarmerLogin';
 import AddProduct from './components/AddProduct';
+import ProductDetail from './components/ProductDetail';
+
+// import css PRODUCT DETALS
+import './components/ProductDetail.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
+
 
 function App() {
   return (
@@ -24,9 +32,8 @@ function App() {
           <Route path='/login' element={<><Login /></>}></Route>
           <Route path='/farmersignup' element={<><FarmerSignup /></>}></Route>
           <Route path='/farmerlogin' element={<><FarmerLogin /></>}></Route>
-
-
           <Route path='/addproduct' element={<><AddProduct /></>}></Route>
+          <Route path='/productdetails' element={<><ProductDetail/></>}></Route>
           
           
         </Routes>
