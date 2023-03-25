@@ -27,6 +27,25 @@ function Home() {
   const data = useSelector((state) => state);
   const [allProducts, setAllProducts] = useState(false);
 
+  const [search, setSearch] = useState([]);
+  const [textSearch, setTextSearch] = useState('');
+
+  const handleSearch = (e) => {
+    setTextSearch(e.target.value)
+    if (data.products.buttons.allProducts === true) {
+      // dispatch(searchAllProducts(e.target.value))
+    } else if (data.products.buttons.stationery) {
+      // dispatch(searchStationery(e.target.value))
+    } else if (data.products.buttons.notes) {
+      // dispatch(searchNotes(e.target.value))
+    } else if (data.products.buttons.previouspapers) {
+      // dispatch(searchPreviousPapers(e.target.value))
+    } else if (data.products.buttons.enotes) {
+      // dispatch(searchEnotes(e.target.value))
+    }
+    setSearch(data.products.searchproducts)
+  }
+
   const filterFruits = () => {
     dispatch(setFruitsButton())
   }
@@ -49,9 +68,9 @@ function Home() {
       setAllProducts(data.products.vegetables)
     } else if (data.products.buttons.foodgrainsButton === true) {
       setAllProducts(data.products.foodgrains)
-    }else if(data.products.reccomended.length!==0){
+    } else if (data.products.reccomended.length !== 0) {
       setAllProducts(data.products.reccomended)
-    }else if(data.products.allProducts.length!==0){
+    } else if (data.products.allProducts.length !== 0) {
       setAllProducts(data.products.allProducts)
     } else {
       if (localStorage.getItem('user')) {
@@ -153,13 +172,13 @@ function Home() {
           <br></br>
           <h6>Filter by category</h6>
           <div className='buttons_grp'>
-            <Button onClick={filterFruits} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin:'10px' }} variant="contained">Fruits</Button>
+            <Button onClick={filterFruits} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin: '10px' }} variant="contained">Fruits</Button>
 
-            <Button onClick={filterVegetables} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin:'10px' }} variant="contained">Vegetables</Button>
+            <Button onClick={filterVegetables} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin: '10px' }} variant="contained">Vegetables</Button>
 
-            <Button onClick={filterFoodGrains} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin:'10px' }} variant="contained">Food Grains</Button>
+            <Button onClick={filterFoodGrains} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin: '10px' }} variant="contained">Food Grains</Button>
 
-            <Button onClick={clearAllFilters} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin:'10px' }} variant="contained">Clear Filters</Button>
+            <Button onClick={clearAllFilters} sx={{ ':hover': { bgcolor: '#242734', color: 'white' }, bgcolor: '#155b8a', margin: '10px' }} variant="contained">Clear Filters</Button>
           </div>
 
         </div>

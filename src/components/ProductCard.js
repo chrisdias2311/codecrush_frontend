@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import './Home.css'
+import { constant } from '../constants';
 
 
 function ProductCard({ id, ownerId, name, description, category, price, image, link, date }) {
@@ -22,8 +23,23 @@ function ProductCard({ id, ownerId, name, description, category, price, image, l
   const [userValidity, setUserValidity] = useState('');
 
 
-  const viewProductDetails = (id) => {
-    navigate('/productdetails/' + id)
+  const viewProductDetails = (id, category) => {
+    // navigate('/productdetails/' + id)
+    const formdata = new FormData();
+    formdata.append('id', JSON.parse(localStorage.getItem('user'))._id)
+    formdata.append('category', category);
+
+    axios.post(constant.URL + '/api/user/productclick', formdata, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        console.log("Resp: ", res);
+      })
+      .catch(err => {
+        alert(err.response.data)
+      });
   }
 
 
@@ -35,7 +51,7 @@ function ProductCard({ id, ownerId, name, description, category, price, image, l
 
   // onClick={() => viewProductDetails(id)}
   return (
-    <div className="product" >
+    <div className="product" onClick={() => viewProductDetails(id, category)} >
       <Card sx={{ maxWidth: 345, minWidth: 345 }}>
         <CardMedia
           component="img"

@@ -82,19 +82,21 @@ function AddProduct() {
         e.preventDefault()
         console.log(formData)
 
-        if (formData.name !== '' && formData.description !== '' && formData.category !== '' && formData.price !== '' && formData.location !== '' && formData.location !== '') {
+        if (formData.name !== '' && formData.description !== '' && formData.category !== '' && formData.price !== '' && formData.location !== '' && formData.image !== '') {
 
             e.preventDefault();
 
             const formdata = new FormData();
+            formdata.append('ownerId', JSON.parse(localStorage.getItem('farmer'))._id);
             formdata.append('name', formData.name);
             formdata.append('description', formData.description);
             formdata.append('category', formData.category);
             formdata.append('price', formData.price);
             formdata.append('location', formData.location);
             formdata.append('quantity', formData.quantity);
+            formdata.append('file', formData.image);
 
-            axios.post(constant.URL + '/api/farmer/register', formdata, {
+            axios.post(constant.URL + '/api/product/addproduct', formdata, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -102,26 +104,8 @@ function AddProduct() {
                 .then(res => {
                     
                     console.log(res);
-                    if (res.status === 200) {
-                        localStorage.clear();
-                        localStorage.setItem('farmer', JSON.stringify(res.data));
-                        alert("Account created successfuly!")
-
-                        formdata.append('farmerPhone', JSON.parse(localStorage.getItem('farmer')).phone);
-                        axios.post(constant.URL + '/api/farmer/getfarmer', formdata, {
-                            headers: {
-                                'Content-Type': 'application/json',
-                            },
-                        })
-                            .then(res => {
-                                localStorage.clear();
-                                localStorage.setItem('farmer', JSON.stringify(res.data));
-                                console.log(res);
-                            })
-                            .catch(err => {
-                                
-                                alert(err.response.data)
-                            });
+                    if(res.status===200){
+                        alert("Product Added Successfully")
                     }
 
                 })
@@ -191,7 +175,8 @@ function AddProduct() {
                                     <Form.Select onChange={handleCategoryChange} aria-label="Default select example">
                                         <option value="Fruits">Fruits</option>
                                         <option value="Vegetables">Vegetables</option>
-                                        <option value="Food Grains">Food Grains</option>
+                                        <option value="Foodgrains">Food Grains</option>
+                                        <option value="Fruits">Fruits</option>
                                     </Form.Select>
                                 </Form.Group>
 
