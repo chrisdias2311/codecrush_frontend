@@ -28,6 +28,9 @@ export const setVegetablesButton = () => ({
 export const setFoodgrainsButton = () => ({
     type: ActionTypes.SET_FOODGRAINS_BUTTON
 })
+export const clearFilters = () => ({
+    type: ActionTypes.CLEAR_FILTERS
+})
 
 
 
