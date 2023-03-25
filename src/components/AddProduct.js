@@ -10,9 +10,32 @@ import './AddProduct.css';
 function AddProduct() {
     const [selectedImage, setSelectedImage] = useState();
 
+    const [formData, setFormData] = useState({
+        name: '',
+        description: '',
+        category: '',
+        price: '',
+        image: '',
+        location: '',
+        quantity: 0
+    });
+
+    const handleNameChange = (event) => {
+        setFormData({ ...formData, name: event.target.value });
+    }
+    const handleDescriptionChange = (event) => {
+        setFormData({ ...formData, description: event.target.value });
+    }
+    const handleCategoryChange = (event) => {
+        setFormData({ ...formData, category: event.target.value });
+    }
+    const handlePriceChange = (event) => {
+        setFormData({ ...formData, price: event.target.value });
+    }
     const imageChange = (e) => {
         if (e.target.files && e.target.files.length > 0) {
             setSelectedImage(e.target.files[0])
+            setFormData({ ...formData, image: e.target.files[0] });
         }
     };
 
@@ -53,32 +76,15 @@ function AddProduct() {
 
                     <div className="col-md-6">
                         <div className="left-box px-4 py-1">
-
-
                             <div className="d-flex justify-content-start py-3">
                                 <p className=' fs-3 text-right fw-bold text-light'>Add Images</p>
                             </div>
-
-
-
-
-                            {/* <Form onSubmit={onSubmit} className='form-inline'>
-                            <Form.Group controlId="formFile" className="mb-3">
-                                <Form.Label>Click here to uploade</Form.Label>
-                                <Form.Control type="file" />
-                                <br/>
-                                <button type='submit' className='btn btn-success'>Uploade File</button>
-                            </Form.Group>
-                            </Form> */}
-
                             <form onSubmit={onSubmit} className='form-inline'>
                                 <div className='form-group'>
                                     <label className='text-warning fw-bold'>Choose File to Uploade:</label>
                                     <input type='file' className='form-control' onChange={imageChange} accept='image/*' />
 
                                 </div>
-
-
                             </form>
 
                             {
@@ -95,35 +101,17 @@ function AddProduct() {
                                     </div>
                                 )
                             }
-
-
-
-
-
-
-
-
-
                         </div>
                     </div>
 
-
-
-
                     <div className="col-md-6">
                         <div className="right-box">
-
-
                             <Form className='px-4 py-2'>
-
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
-
-
                                     <div className="d-flex justify-content-start">
                                         <Form.Label><p className="fw-bold my-1 text-light">Product  Name
                                         </p></Form.Label>
                                     </div>
-
                                     <Form.Control type="tex" placeholder="Product name" />
                                 </Form.Group>
 
@@ -133,9 +121,12 @@ function AddProduct() {
                                         <Form.Label><p className="fw-bold my-1 text-light">Category
                                         </p></Form.Label>
                                     </div>
-                                    <Form.Control type="tex" placeholder="Category" />
+                                    <Form.Select aria-label="Default select example">
+                                        <option value="1">Fruits</option>
+                                        <option value="2">Vegetables</option>
+                                        <option value="3">Food Grains</option>
+                                    </Form.Select>
                                 </Form.Group>
-
 
 
                                 <div className="d-flex justify-content-start">
@@ -147,8 +138,6 @@ function AddProduct() {
                                     <Form.Control aria-label="Amount (to the nearest dollar)" />
                                     <InputGroup.Text>.00</InputGroup.Text>
                                 </InputGroup>
-
-
 
 
                                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -168,15 +157,12 @@ function AddProduct() {
                                 </Form.Group>
 
 
-
                                 <div className="d-flex justify-content-end me-2">
                                     <Button variant="primary" type="submit">
                                         Add Product
                                     </Button></div>
 
                             </Form>
-
-
 
                         </div>
                     </div>

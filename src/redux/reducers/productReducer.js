@@ -66,6 +66,16 @@ export const productReducer = (state = initialState, { type, payload }) => {
                     reccomendedButton: false,
                 }
             };
+            case ActionTypes.CLEAR_FILTERS:
+                return {
+                    ...state, buttons: {
+                        ...state.buttons,
+                        fruitsButton: false,
+                        vegetablesButton: false,
+                        foodgrainsButton: false,
+                        reccomendedButton: false,
+                    }
+                };
 
 
         case ActionTypes.SET_STATIONERY:
