@@ -9,6 +9,7 @@ import OtpValidation from './components/OtpValidation';
 import Login from './components/Login';
 import FarmerSignup from './components/FarmerSignup';
 import FarmerLogin from './components/FarmerLogin';
+import AddProduct from './components/AddProduct';
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
           <Route path='/login' element={<><Login /></>}></Route>
           <Route path='/farmersignup' element={<><FarmerSignup /></>}></Route>
           <Route path='/farmerlogin' element={<><FarmerLogin /></>}></Route>
+
+
+          <Route path='/addproduct' element={<><AddProduct /></>}></Route>
+          
           
         </Routes>
       </BrowserRouter>
