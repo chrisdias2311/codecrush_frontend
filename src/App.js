@@ -18,6 +18,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import './components/Test.css' ;
+import Test from './components/Test';
+
 
 
 function App() {
@@ -35,6 +38,7 @@ function App() {
           <Route path='/farmerlogin' element={<><FarmerLogin /></>}></Route>
           <Route path='/addproduct' element={<><AddProduct /></>}></Route>
           <Route path='/productdetails' element={<><ProductDetail/></>}></Route>
+          <Route path='/trans' element={<><Test/></>}></Route>
           
           
         </Routes>
