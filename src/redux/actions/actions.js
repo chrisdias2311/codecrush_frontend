@@ -31,7 +31,17 @@ export const setFoodgrainsButton = () => ({
 export const clearFilters = () => ({
     type: ActionTypes.CLEAR_FILTERS
 })
+export const setSearchProducts = () => ({
+    type: ActionTypes.SET_SEARCH_BUTTON
+})
 
+
+export const searchAllProducts = (search) => {
+    return{
+      type: ActionTypes.SEARCH_ALL_PRODUCTS,
+      payload:search
+    }
+  }
 
 
 export const setStationery = () => ({

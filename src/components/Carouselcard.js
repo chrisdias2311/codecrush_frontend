@@ -8,7 +8,7 @@ import 'react-multi-carousel/lib/styles.css';
 export default function Carouselcard(props) {
   return (
     <div>
-    <Card className='border shadow' style={{ width: '18rem' }}>
+    <Card className='h-100 border shadow' style={{ width: '18rem' }}>
         <Card.Img variant="top" src={props.url} />
         <Card.Body>
             <Card.Title>{props.name}</Card.Title>

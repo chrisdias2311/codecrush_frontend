@@ -24,7 +24,7 @@ function ProductCard({ id, ownerId, name, description, category, price, image, l
 
 
   const viewProductDetails = (id, category) => {
-    // navigate('/productdetails/' + id)
+    navigate('/productdetails/' + id)
     const formdata = new FormData();
     formdata.append('id', JSON.parse(localStorage.getItem('user'))._id)
     formdata.append('category', category);

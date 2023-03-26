@@ -19,11 +19,16 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useDispatch } from 'react-redux';
 import Logo from '../Logo.png';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import Stack from '@mui/material/Stack';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
 
 import { styled, alpha } from '@mui/material/styles';
 
 
-import { setFruitsButton, setVegetablesButton, setFoodgrainsButton } from '../redux/actions/actions';
+import { setFruitsButton, setVegetablesButton, setFoodgrainsButton, searchAllProducts, setSearchProducts } from '../redux/actions/actions';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
@@ -78,6 +83,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 function DrawerAppBar(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const data = useSelector((state) => state);
+
+  const handleSearch = (e) => {
+    console.log("Handle Search called")
+    setTextSearch(e.target.value)
+    dispatch(searchAllProducts(e.target.value))
+    setSearch(data.products.searchproducts)
+  }
+
+  const searchProducts = () => {
+    dispatch(setSearchProducts())
+  }
+
+  const [search, setSearch] = useState([]);
+  const [textSearch, setTextSearch] = useState('');
 
   const filterFruits = () => {
     dispatch(setFruitsButton())
@@ -260,15 +280,16 @@ function DrawerAppBar(props) {
             />
           </Typography>
           <Search sx={{ marginLeft: 5, display: 'flex' }}>
-
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleSearch}
             />
-            <SearchIconWrapper>
+            <SearchIconWrapper onClick={searchProducts}>
               <SearchIcon />
             </SearchIconWrapper>
           </Search>
+          <Button onClick={searchProducts} sx={{ ':hover': { bgcolor: 'black', color: 'white' }, bgcolor: '#155b8a', margin: '10px' }} variant="contained"><SearchIcon /></Button>
 
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
             {navItems.map((item) => (
