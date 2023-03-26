@@ -14,14 +14,12 @@ import ProductDetail from './components/ProductDetail';
 
 // import css PRODUCT DETALS
 import './components/ProductDetail.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import './components/Test.css' ;
 import Test from './components/Test';
 import UpdateTrans from './components/UpdateTrans';
 import "./components/UpdateTrans.css";
+import FarmerBoard from './components/FarmerBoard';
 
 
 
@@ -42,6 +40,7 @@ function App() {
           <Route path='/productdetails/:id' element={<><ProductDetail/></>}></Route>
           <Route path='/trans' element={<><Test/></>}></Route>
           <Route path='/updatetrans' element={<><UpdateTrans/></>}></Route>
+          <Route path='/farmerdash' element={<><FarmerBoard/></>}></Route>
           
           
         </Routes>
