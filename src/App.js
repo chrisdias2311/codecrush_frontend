@@ -37,7 +37,7 @@ function App() {
           <Route path='/farmersignup' element={<><FarmerSignup /></>}></Route>
           <Route path='/farmerlogin' element={<><FarmerLogin /></>}></Route>
           <Route path='/addproduct' element={<><AddProduct /></>}></Route>
-          <Route path='/productdetails' element={<><ProductDetail/></>}></Route>
+          <Route path='/productdetails/:id' element={<><ProductDetail/></>}></Route>
           <Route path='/trans' element={<><Test/></>}></Route>
           
           
