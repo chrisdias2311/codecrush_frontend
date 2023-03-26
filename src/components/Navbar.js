@@ -85,6 +85,10 @@ function DrawerAppBar(props) {
   const navigate = useNavigate();
   const data = useSelector((state) => state);
 
+  const navigateToAddProduct = () => {
+    navigate('/addproduct')
+  }
+
   const handleSearch = (e) => {
     console.log("Handle Search called")
     setTextSearch(e.target.value)
@@ -279,25 +283,41 @@ function DrawerAppBar(props) {
               src={Logo}
             />
           </Typography>
+
           <Search sx={{ marginLeft: 5, display: 'flex' }}>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
               onChange={handleSearch}
             />
-            <SearchIconWrapper onClick={searchProducts}>
+            {/* <SearchIconWrapper onClick={searchProducts}>
               <SearchIcon />
-            </SearchIconWrapper>
+            </SearchIconWrapper> */}
           </Search>
           <Button onClick={searchProducts} sx={{ ':hover': { bgcolor: 'black', color: 'white' }, bgcolor: '#155b8a', margin: '10px' }} variant="contained"><SearchIcon /></Button>
 
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }}>
-                {item}
-              </Button>
-            ))}
-          </Box>
+          {
+                        (localStorage.getItem('user') || localStorage.getItem('farmer')) ?
+                            (
+                                localStorage.getItem('user') ?
+                                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                        <Button onClick={navigateToHome} sx={{ color: '#fff' }}>Home</Button>
+                                        <Button sx={{ color: '#fff' }}>Dashboard</Button>
+                                       
+                                    </Box>
+                                    :
+                                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                        <Button sx={{ color: '#fff' }}>Home</Button>
+                                        <Button onClick={navigateToAddProduct} sx={{ color: '#fff' }}>Add Product</Button>
+                                    </Box>
+                            )
+                            :
+                            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                                <Button onClick={navigateToHome} sx={{ color: '#fff' }}>Home</Button>
+                                <Button onClick={navigateToSignup} sx={{ color: '#fff', paddingRight: 3 }}>Sign-Up as User</Button>
+                                <Button onClick={navigateToFarmerSignup} sx={{ color: '#fff' }}>Sign-up as Farmer</Button>
+                            </Box>
+                    }
         </Toolbar>
       </AppBar>
       <Box component="nav">
