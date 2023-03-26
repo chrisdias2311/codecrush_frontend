@@ -16,7 +16,8 @@ import ProductDetail from './components/ProductDetail';
 import './components/ProductDetail.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-
+import Carousel from 'react-multi-carousel';
+import 'react-multi-carousel/lib/styles.css';
 
 
 function App() {
