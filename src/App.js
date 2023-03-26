@@ -40,7 +40,6 @@ function App() {
           <Route path='/productdetails/:id' element={<><ProductDetail/></>}></Route>
           <Route path='/trans' element={<><Test/></>}></Route>
           <Route path='/updatetrans' element={<><UpdateTrans/></>}></Route>
-          <Route path='/farmerdash' element={<><FarmerBoard/></>}></Route>
           
           
         </Routes>

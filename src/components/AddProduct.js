@@ -123,10 +123,10 @@ function AddProduct() {
         <>
             <div className="container my-3">
                 <br></br> <br></br> <br></br> <br></br>
-                <div className="row">
+                <div className="row" id="productbox">
 
                     <div className="col-md-6">
-                        <div className="left-box px-4 py-1">
+                        <div  className="left-box px-4 py-1">
                             <div className="d-flex justify-content-start py-3">
                                 <p className=' fs-3 text-right fw-bold text-light'>Add Images</p>
                             </div>

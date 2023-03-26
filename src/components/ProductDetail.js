@@ -23,7 +23,7 @@ function ProductDetail() {
 
 	useEffect(() => {
 		console.log('Id: ', params.id)
-		setProductData(data.products.allProducts)
+		// setProductData(data.products.allProducts)
 
 		const formdata = new FormData();
 		formdata.append('id', params.id);
@@ -36,6 +36,14 @@ function ProductDetail() {
 			.then(res => {
 				console.log(res)
 				setSelectedProduct(res.data)
+				if(res.data.category==='Fruits'){
+					setProductData(data.products.fruits)
+				}else if(res.data.category==='Vegetables'){
+					setProductData(data.products.vegetables)
+				}else{
+					setProductData(data.products.foodgrains)
+				}
+				
 			})
 			.catch(err =>
 				console.log("This is the error", err),

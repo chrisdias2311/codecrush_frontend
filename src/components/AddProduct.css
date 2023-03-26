@@ -61,5 +61,13 @@
     background-size: cover;
     border-radius: 1rem;
   } */
+
+#productbox{
+  background-image: url('../Images/pic7.jpg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+
+}
   
   
