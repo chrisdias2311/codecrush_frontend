@@ -41,7 +41,7 @@ function App() {
           <Route path='/addproduct' element={<><AddProduct /></>}></Route>
           <Route path='/productdetails/:id' element={<><ProductDetail/></>}></Route>
           <Route path='/trans' element={<><Test/></>}></Route>
-          <Route path='/updatetrans' element={<><UpdateTrans/></>}></Route>
+          <Route path='/updatetransaction/:id' element={<><UpdateTrans/></>}></Route>
           
           
         </Routes>
