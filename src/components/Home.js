@@ -68,7 +68,9 @@ function Home() {
       setAllProducts(data.products.vegetables)
     } else if (data.products.buttons.foodgrainsButton === true) {
       setAllProducts(data.products.foodgrains)
-    } else if (data.products.reccomended.length !== 0) {
+    }else if (data.products.buttons.search === true) {
+      setAllProducts(data.products.searchproducts)
+    }  else if (data.products.reccomended.length !== 0) {
       setAllProducts(data.products.reccomended)
     } else if (data.products.allProducts.length !== 0) {
       setAllProducts(data.products.allProducts)

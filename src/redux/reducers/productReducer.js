@@ -9,6 +9,8 @@ const initialState = {
     foodgrains: [],
     stationery: [],
 
+    searchproducts:[],
+
 
     buttons: {
         filterButton: false,
@@ -17,6 +19,7 @@ const initialState = {
         vegetablesButton: false,
         foodgrainsButton: false,
         reccomendedButton: false,
+        search:false,
     }
 }
 
@@ -44,6 +47,7 @@ export const productReducer = (state = initialState, { type, payload }) => {
                     vegetablesButton: false,
                     foodgrainsButton: false,
                     reccomendedButton: false,
+                    search:false,
                 }
             };
         case ActionTypes.SET_VEGETABLES_BUTTON:
@@ -54,6 +58,7 @@ export const productReducer = (state = initialState, { type, payload }) => {
                     vegetablesButton: true,
                     foodgrainsButton: false,
                     reccomendedButton: false,
+                    search:false,
                 }
             };
         case ActionTypes.SET_FOODGRAINS_BUTTON:
@@ -64,6 +69,18 @@ export const productReducer = (state = initialState, { type, payload }) => {
                     vegetablesButton: false,
                     foodgrainsButton: true,
                     reccomendedButton: false,
+                    search:false,
+                }
+            };
+        case ActionTypes.SET_SEARCH_BUTTON:
+            return {
+                ...state, buttons: {
+                    ...state.buttons,
+                    fruitsButton: false,
+                    vegetablesButton: false,
+                    foodgrainsButton: false,
+                    reccomendedButton: false,
+                    search:true,
                 }
             };
             case ActionTypes.CLEAR_FILTERS:
@@ -75,6 +92,11 @@ export const productReducer = (state = initialState, { type, payload }) => {
                         foodgrainsButton: false,
                         reccomendedButton: false,
                     }
+                };
+            case ActionTypes.SEARCH_ALL_PRODUCTS:
+                return {
+                    ...state,
+                    searchproducts: state.allProducts.filter((item) => item.description.toLowerCase().includes(payload.toLowerCase()) || item.name.toLowerCase().includes    (payload.toLowerCase()) || item.category.toLowerCase().includes(payload.toLowerCase()))
                 };
 
 
