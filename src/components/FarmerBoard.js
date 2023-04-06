@@ -1,7 +1,34 @@
 import React from 'react'
 import './Test.css';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { constant } from '../constants';
+import { useState } from 'react';
+
+
 
 function FarmerBoard() {
+    const [transactions, setTransactions] = useState([])
+
+    useEffect(() => {
+        const formdata = new FormData();
+        formdata.append('id', JSON.parse(localStorage.getItem('farmer'))._id);
+
+        axios.post(constant.URL + '/api/transaction/getmytransactions', formdata, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(res => {
+                console.log(res);
+                setTransactions(res.data);
+            })
+            .catch(err => {
+                console.log("Frontend err: ", err)
+            });
+
+    }, [])
+
     return (
         <div class="container-xl">
             <div class="table-responsive">
@@ -18,59 +45,25 @@ function FarmerBoard() {
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Sr</th>
                                 <th>Order Id</th>
                                 <th>Product Name</th>
                                 <th>Order Date</th>
                                 <th>Status</th>
-                                <th>Amount</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td><a href="#">Michael Holz</a></td>
-                                <td>London</td>
-                                <td>Jun 15, 2017</td>
-                                <td><span class="status text-success">&bull;</span> Delivered</td>
-                                <td>₹ 254</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td><a href="#"> Paula Wilson</a></td>
-                                <td>Madrid</td>
-                                <td>Jun 21, 2017</td>
-                                <td><span class="status text-info">&bull;</span> Shipped</td>
-                                <td>₹ 1,260</td>
 
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td><a href="#">Antonio Moreno</a></td>
-                                <td>Berlin</td>
-                                <td>Jul 04, 2017</td>
-                                <td><span class="status text-danger">&bull;</span> Cancelled</td>
-                                <td>₹ 350</td>
+                            {
+                                transactions.length > 0 ? transactions.map((item, index) =>
+                                    <tr>
+                                        <td><a>{item._id}</a></td>
+                                        <td>{item.productName}</td>
+                                        <td>{item.orderDate}</td>
+                                        <td><span class="status text-success">&bull;</span>{item.status}</td>
+                                    </tr>
+                                ) : <h1>No products found</h1>
+                            }
 
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td><a href="#"> Mary Saveley</a></td>
-                                <td>New York</td>
-                                <td>Jul 16, 2017</td>
-                                <td><span class="status text-warning">&bull;</span> Pending</td>
-                                <td>₹ 1,572</td>
-
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td><a href="#">Martin Sommer</a></td>
-                                <td>Paris</td>
-                                <td>Aug 04, 2017</td>
-                                <td><span class="status text-success">&bull;</span> Delivered</td>
-                                <td>₹ 580</td>
-
-                            </tr>
                         </tbody>
                     </table>
 

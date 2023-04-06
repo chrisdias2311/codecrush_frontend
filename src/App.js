@@ -20,6 +20,7 @@ import Test from './components/Test';
 import UpdateTrans from './components/UpdateTrans';
 import "./components/UpdateTrans.css";
 import FarmerBoard from './components/FarmerBoard';
+import ValidateUser from './components/ValidateUser';
 
 
 
@@ -40,6 +41,9 @@ function App() {
           <Route path='/productdetails/:id' element={<><ProductDetail/></>}></Route>
           <Route path='/trans' element={<><Test/></>}></Route>
           <Route path='/updatetrans' element={<><UpdateTrans/></>}></Route>
+          <Route path='/farmerboard' element={<><FarmerBoard/></>}></Route>
+          <Route path='/validateuser' element={<><ValidateUser/></>}></Route>
+
           
           
         </Routes>

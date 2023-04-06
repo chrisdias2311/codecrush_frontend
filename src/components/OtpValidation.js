@@ -24,7 +24,7 @@ function OtpValidation() {
 
 
     const getOtp = () => {
-        const id = (localStorage.getItem('user')).email
+        const id = JSON.parse(localStorage.getItem('user')).email
         axios.get(constant.URL+`/api/user/generateotp/${id}`, {
             headers: {
                 'Content-Type': 'application/json',

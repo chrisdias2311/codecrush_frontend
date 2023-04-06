@@ -128,6 +128,9 @@ function DrawerAppBar(props) {
   const navigateToFarmerLogin = () => {
     navigate('/farmerlogin')
   }
+  const navigateToFarmerDashboard = () =>{
+    navigate('/farmerboard')
+  }
 
 
   const { window } = props;
@@ -309,6 +312,7 @@ function DrawerAppBar(props) {
                                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                                         <Button sx={{ color: '#fff' }}>Home</Button>
                                         <Button onClick={navigateToAddProduct} sx={{ color: '#fff' }}>Add Product</Button>
+                                        <Button onClick={navigateToFarmerDashboard} sx={{ color: '#fff' }}>Dashboard</Button>
                                     </Box>
                             )
                             :

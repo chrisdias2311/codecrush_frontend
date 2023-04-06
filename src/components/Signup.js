@@ -163,7 +163,7 @@ function Signup() {
                     <br></br>
 
                     <Button variant="contained" onClick={submitSignupForm}>
-                        Create UniEx Account
+                        Create Account
                     </Button>
                 </div>
             </div>
