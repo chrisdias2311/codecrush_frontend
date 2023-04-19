@@ -161,21 +161,7 @@ function ProductDetail() {
 					{product}
 
 				</Carousel>;
-
-
-
 			</div>
-
-
-
-
-
-
-
-
-
-
-
 
 		</>
 	)
